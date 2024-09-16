@@ -1,20 +1,83 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>WebView Test</title>
-    <script type="text/javascript">
-      function sendMessageToFlutter() {
-        // Ensure this matches the name defined in Flutter ('FlutterChannel')
-        if (window.FlutterChannel) {
-          FlutterChannel.postMessage("Hello from the web page!");
-        } else {
-          console.log("FlutterChannel is not defined.");
-        }
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive WebView</title>
+  <style>
+    /* Basic reset for margin and padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Make the body take the full height of the viewport and use Flexbox */
+    body {
+      display: flex;
+      justify-content: center; /* Horizontally center */
+      align-items: center;     /* Vertically center */
+      height: 100vh;           /* Full viewport height */
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Center content container */
+    .container {
+      text-align: center;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1.2em;
+      color: #fff;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5em;
       }
-    </script>
-  </head>
-  <body>
-    <h1>Welcome to the WebView</h1>
-    <button onclick="sendMessageToFlutter()">Send Message to Flutter</button>
-  </body>
+
+      button {
+        font-size: 1em;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Hello, WebView!</h1>
+    <button onclick="sendMessageToFlutter()">Send Message</button>
+  </div>
+
+  <script type="text/javascript">
+    function sendMessageToFlutter() {
+      // This sends a message to Flutter's JavaScript channel
+      if (window.FlutterChannel) {
+        FlutterChannel.postMessage("Hello from Web!");
+      } else {
+        console.log("FlutterChannel is not defined.");
+      }
+    }
+  </script>
+</body>
 </html>

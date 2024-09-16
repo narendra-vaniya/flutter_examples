@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebView Test</title>
+    <script type="text/javascript">
+      function sendMessageToFlutter() {
+        // Ensure this matches the name defined in Flutter ('FlutterChannel')
+        if (window.FlutterChannel) {
+          FlutterChannel.postMessage("Hello from the web page!");
+        } else {
+          console.log("FlutterChannel is not defined.");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Welcome to the WebView</h1>
+    <button onclick="sendMessageToFlutter()">Send Message to Flutter</button>
+  </body>
+</html>
